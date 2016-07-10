@@ -1,1 +1,0 @@
-/Users/luckstealer23/.vim/.vimrc

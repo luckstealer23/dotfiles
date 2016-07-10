@@ -1,0 +1,53 @@
+OPTIONS=window:tty
+OPTIONS=cursesgraphics
+OPTIONS=align_message:bottom
+OPTIONS=align_status:right
+OPTIONS=player_selection
+OPTIONS=popup_dialog
+
+# Use DEC line-drawing characters. Won't work for all terminals.
+OPTIONS=DECgraphics
+# Use IBM extended characters. Won't work for all terminals
+# http://nethackwiki.com/wiki/IBMgraphics
+#OPTIONS=IBMgraphics
+OPTIONS=show_dgn_name
+OPTIONS=pickup_types:$!+="?/ 
+OPTIONS=autopickup
+OPTIONS=showweight
+OPTIONS=invweight 
+OPTIONS=menucolors
+OPTIONS=extmenu
+OPTIONS=boulder:0
+MENUCOLOR=" blessed "=green
+MENUCOLOR=" holy "=green
+MENUCOLOR=" uncursed "=yellow
+MENUCOLOR=" cursed "=red
+MENUCOLOR=" unholy "=red
+MENUCOLOR=" cursed .* (being worn)"=orange&underline
+
+MENUCOLOR="loadstone\|wand \(of\|called\) cancellation"=underline
+MENUCOLOR="Amulet of Yendor named"=magenta                           # color only the real Amulet
+MENUCOLOR="gold piece"=yellow
+
+MENUCOLOR=". -.* \[(Unskilled|Basic|Skilled|Expert|Master)"=white # skill slots
+MENUCOLOR="[a-zA-Z] - [a-zA-Z ]+[ ]+[0-9]+\*[ ]+[a-z]+[ ]+[0-9]+%"=magenta  # forgotten spell
+
+
+# Colorize the status line values
+## HP
+STATUSCOLOR=hp%100=green,hp%66=yellow,hp%50=orange
+STATUSCOLOR=hp%33=red&bold,hp%15:red&inverse,hp%0:red&inverse&blink
+## Pw
+STATUSCOLOR=pw%100=green,pw%66=yellow,pw%50:orange,pw%33=red&bold
+## Carry
+STATUSCOLOR=burdened:yellow,stressed:orange,strained:red&bold 
+STATUSCOLOR=overtaxed:red&inverse,overloaded:red&inverse&blink
+## Hunger
+STATUSCOLOR=satiated:yellow,hungry:orange,weak:red&bold   
+STATUSCOLOR=fainting:red&inverse,fainted:red&inverse&blink
+## Mental
+STATUSCOLOR=hallu:yellow,conf:orange,stun:red&bold
+## Health
+STATUSCOLOR=ill:red&inverse,foodpois:red&inverse,slime:red&inverse
+## Other
+STATUSCOLOR=held:red&inverse,blind:red&inverse

@@ -6,6 +6,7 @@ set nocompatible          " get rid of Vi compatibility mode. SET FIRST!
 filetype plugin on
 filetype indent on
 
+execute pathogen#infect()
 " ESC jk and leader = space 
 inoremap jk <ESC>
 let mapleader = "\<Space>"
@@ -40,6 +41,12 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+
+" Disable scrollbars (real hackers don't use scrollbars for navigation!)
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -152,7 +159,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
@@ -195,3 +202,23 @@ function! ToggleNumber()
         set relativenumber
     endif
 endfunc
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERDTree  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
+" Open MacVim in fullscreen mode
+if has("gui_macvim")
+    set fuoptions=maxvert,maxhorz
+    au GUIEnter * set fullscreen
+endif

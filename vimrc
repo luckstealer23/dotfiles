@@ -2,11 +2,16 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible          " get rid of Vi compatibility mode. SET FIRST!
+ 
 " Enable filetype plugins
-filetype plugin on
+
 filetype indent on
 
 execute pathogen#infect()
+call pathogen#infect()
+filetype off
+filetype plugin on
+filetype plugin indent on
 " ESC jk and leader = space 
 inoremap jk <ESC>
 let mapleader = "\<Space>"
@@ -14,7 +19,11 @@ let mapleader = "\<Space>"
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Fast edit .vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
+set sessionoptions-=options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -57,6 +57,9 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
+" Show menu when autocomplete
+set wildmenu
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -76,6 +79,9 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 endif
+" Add cursorline
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -231,3 +237,9 @@ if has("gui_macvim")
     set fuoptions=maxvert,maxhorz
     au GUIEnter * set fullscreen
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Notes  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+:let g:notes_directories = ['~/Documents/Notes']

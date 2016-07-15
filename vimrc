@@ -251,3 +251,23 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 :let g:notes_directories = ['~/Documents/Notes']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Solarized settings  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" change the default EasyMotion shading to something more readable with
+" Solarized
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0

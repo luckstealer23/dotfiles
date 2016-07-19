@@ -25,6 +25,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 set sessionoptions-=options
 
+" Save swap files to tmp
+set directory^=$HOME/.vim/tmp/
+
 " Set path for C
 let &path.="src/include,/usr/includ/AL,"
 
@@ -87,7 +90,9 @@ if has("gui_running")
 endif
 " Add cursorline
 set cursorline
+
 hi CursorLine term=bold cterm=bold guibg=Grey40
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -250,7 +255,7 @@ endif
 " => Notes  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-:let g:notes_directories = ['~/Documents/Notes']
+let g:notes_directories = ['~/Documents/Notes']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Solarized settings  
@@ -271,3 +276,8 @@ set statusline+=%#warningmsg#
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"

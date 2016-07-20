@@ -25,8 +25,14 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 set sessionoptions-=options
 
+" Save swap files to tmp
+set directory^=$HOME/.vim/tmp/
+
 " Set path for C
 let &path.="src/include,/usr/includ/AL,"
+
+" TagbarToggle
+nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,7 +76,7 @@ set wildmenu
 syntax enable             " enable syntax highlighting (previously syntax on).
 set t_Co=256              " enable 256-color mode.
 try
-        colorscheme desert
+        colorscheme solarized
     catch
     endtry
 set background=dark
@@ -84,7 +90,9 @@ if has("gui_running")
 endif
 " Add cursorline
 set cursorline
+
 hi CursorLine term=bold cterm=bold guibg=Grey40
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -95,9 +103,9 @@ set number                " show line numbers
 set laststatus=2          " last window always has a statusline
 set nohlsearch            " Don't continue to highlight searched phrases.
 set autoindent            " auto-indent
-set tabstop=4             " tab spacing
-set softtabstop=4         " unify
-set shiftwidth=4          " indent/outdent by 4 columns
+set tabstop=2             " tab spacing
+set softtabstop=2         " unify
+set shiftwidth=2          " indent/outdent by 4 columns
 set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
 set smarttab              " use tabs at the start of a line, spaces elsewhere
@@ -127,8 +135,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Show and select buffer
+map <leader>a :ls<cr>:buffer
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>bd :bd<cr>
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -245,4 +255,29 @@ endif
 " => Notes  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-:let g:notes_directories = ['~/Documents/Notes']
+let g:notes_directories = ['~/Documents/Notes']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Solarized settings  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" change the default EasyMotion shading to something more readable with
+" Solarized
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"

@@ -103,8 +103,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         monokai
                          spacemacs-dark
+                         monokai
                          spacemacs-light
                          solarized-light
                          solarized-dark
@@ -285,7 +285,8 @@ you should place you code here."
    (quote
     (company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-cmake company-capf company-files
                   (company-dabbrev-code company-gtags company-etags company-keywords)
-                  company-oddmuse company-dabbrev))))
+                  company-oddmuse company-dabbrev)))
+ '(org-agenda-files (quote ("~/Dropbox/TU - Elektrotechnik/org/todo.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

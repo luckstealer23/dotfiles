@@ -7,9 +7,33 @@ set nocompatible          " get rid of Vi compatibility mode. SET FIRST!
 
 filetype indent on
 
-execute pathogen#infect()
-call pathogen#infect()
+"execute pathogen#infect()
+"call pathogen#infect()
+set rtp+=/Users/luckstealer23/.vim/bundle/Vundle.vim
+call vundle#begin()
 filetype off
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/c.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'vim-airline/vim-airline'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'tpope/vim-fugitive'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end() 
 filetype plugin on
 filetype plugin indent on
 " ESC jk and leader = space 
@@ -75,11 +99,6 @@ set wildmenu
 " Enable syntax highlighting
 syntax enable             " enable syntax highlighting (previously syntax on).
 set t_Co=256              " enable 256-color mode.
-try
-        colorscheme solarized
-    catch
-    endtry
-set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -192,10 +211,12 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 map 0 ^
 
 " Move a line of text using ALT+[
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 if has("mac") || has("macunix")
    nmap <D-j> <M-j>
@@ -281,3 +302,5 @@ set statusline+=%#warningmsg#
 " => Syntastic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
